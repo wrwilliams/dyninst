@@ -4155,6 +4155,300 @@ namespace rose {
                     }
                 };
 
+                struct IP_tst_ands_log_imm_execute : P {                                    //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[0]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+
+                        switch (d->op(raw)) {
+                            case LogicalOp_AND: {
+                                result = ops->and_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_ORR: {
+                                result = ops->or_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_EOR: {
+                                result = ops->xor_(operand1, operand2);
+                            }
+                                break;
+                        }
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N,
+                                             ops->extract(result, result->get_width() - 1, result->get_width()));
+                            d->writeRegister(d->REG_Z, d->isZero(result));
+                            d->writeRegister(d->REG_C, ops->number_(1, 0));
+                            d->writeRegister(d->REG_V, ops->number_(1, 0));
+                        }
+
+                        if (EXTR(0, 4) == 31 && !d->setflags(raw)) {
+                            d->writeRegister(d->REG_SP, result);
+                        } else {
+                            d->writeRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 64), result);
+                        }
+
+                    }
+                };
+
+                struct IP_tst_ands_log_shift_execute : P {                                  //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[0]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+
+                        if ((EXTR(21, 21) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+
+                        switch (d->op(raw)) {
+                            case LogicalOp_AND: {
+                                result = ops->and_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_ORR: {
+                                result = ops->or_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_EOR: {
+                                result = ops->xor_(operand1, operand2);
+                            }
+                                break;
+                        }
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N,
+                                             ops->extract(result, result->get_width() - 1, result->get_width()));
+                            d->writeRegister(d->REG_Z, d->isZero(result));
+                            d->writeRegister(d->REG_C, ops->number_(1, 0));
+                            d->writeRegister(d->REG_V, ops->number_(1, 0));
+                        }
+                        d->writeRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 64), result);
+
+                    }
+                };
+
+                struct IP_sbc_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[2]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+                        result = d->doAddOperation(operand1, operand2, d->readRegister(d->REG_C), ops->boolean_(false),
+                                                   n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_sbcs_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[2]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+                        result = d->doAddOperation(operand1, operand2, d->readRegister(d->REG_C), ops->boolean_(false),
+                                                   n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_ngc_sbc_execute : P {                                             //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->readRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 32));
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+                        result = d->doAddOperation(operand1, operand2, d->readRegister(d->REG_C), ops->boolean_(false),
+                                                   n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_ngcs_sbcs_execute : P {                                           //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->readRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 32));
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+                        result = d->doAddOperation(operand1, operand2, d->readRegister(d->REG_C), ops->boolean_(false),
+                                                   n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_neg_sub_addsub_shift_execute : P {                                //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->readRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 32));
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+                        bool carry_in;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                            carry_in = true;
+                        } else {
+                            carry_in = false;
+                        }
+                        result = d->doAddOperation(operand1, operand2, carry_in, ops->boolean_(false), n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_negs_subs_addsub_shift_execute : P {                              //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->readRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 32));
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+                        BaseSemantics::SValuePtr n, z, c, v;
+                        bool carry_in;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                            carry_in = true;
+                        } else {
+                            carry_in = false;
+                        }
+                        result = d->doAddOperation(operand1, operand2, carry_in, ops->boolean_(false), n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_mvn_orn_log_shift_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->readRegister(RegisterDescriptor(armv8_regclass_gpr, armv8_gpr_zr, 0, 32));
+                        BaseSemantics::SValuePtr operand2 = d->read(args[1]);
+
+                        if ((EXTR(21, 21) == 1)) {
+                            operand2 = d->NOT(operand2);
+                        }
+
+                        switch (d->op(raw)) {
+                            case LogicalOp_AND: {
+                                result = ops->and_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_ORR: {
+                                result = ops->or_(operand1, operand2);
+                            }
+                                break;
+                            case LogicalOp_EOR: {
+                                result = ops->xor_(operand1, operand2);
+                            }
+                                break;
+                        }
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N,
+                                             ops->extract(result, result->get_width() - 1, result->get_width()));
+                            d->writeRegister(d->REG_Z, d->isZero(result));
+                            d->writeRegister(d->REG_C, ops->number_(1, 0));
+                            d->writeRegister(d->REG_V, ops->number_(1, 0));
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_mov_add_addsub_imm_execute : P {                                  //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->Zeros(operand1->get_width());
+                        BaseSemantics::SValuePtr n, z, c, v;
+                        bool carry_in;
+
+                        if ((EXTR(30, 30) == 1)) {
+                            operand2 = d->NOT(operand2);
+                            carry_in = true;
+                        } else {
+                            carry_in = false;
+                        }
+                        result = d->doAddOperation(operand1, operand2, carry_in, ops->boolean_(false), n, z, c, v);
+
+                        if (d->setflags(raw)) {
+                            d->writeRegister(d->REG_N, n);
+                            d->writeRegister(d->REG_Z, z);
+                            d->writeRegister(d->REG_C, c);
+                            d->writeRegister(d->REG_V, v);
+                        }
+
+                        if (EXTR(0, 4) == 31 && !d->setflags(raw)) {
+                            d->writeRegister(d->REG_SP, result);
+                        } else {
+                            d->write(args[0], result);
+                        }
+
+                    }
+                };
+
             } // namespace
 
 /*******************************************************************************************************************************
@@ -4283,6 +4577,16 @@ namespace rose {
                 iproc_set(rose_aarch64_op_lsrv, new ARM64::IP_lsrv_execute);
                 iproc_set(rose_aarch64_op_ror_rorv, new ARM64::IP_ror_rorv_execute);
                 iproc_set(rose_aarch64_op_rorv, new ARM64::IP_rorv_execute);
+                iproc_set(rose_aarch64_op_tst_ands_log_imm, new ARM64::IP_tst_ands_log_imm_execute);
+                iproc_set(rose_aarch64_op_tst_ands_log_shift, new ARM64::IP_tst_ands_log_shift_execute);
+                iproc_set(rose_aarch64_op_sbc, new ARM64::IP_sbc_execute);
+                iproc_set(rose_aarch64_op_sbcs, new ARM64::IP_sbcs_execute);
+                iproc_set(rose_aarch64_op_ngc_sbc, new ARM64::IP_ngc_sbc_execute);
+                iproc_set(rose_aarch64_op_ngcs_sbcs, new ARM64::IP_ngcs_sbcs_execute);
+                iproc_set(rose_aarch64_op_neg_sub_addsub_shift, new ARM64::IP_neg_sub_addsub_shift_execute);
+                iproc_set(rose_aarch64_op_negs_subs_addsub_shift, new ARM64::IP_negs_subs_addsub_shift_execute);
+                iproc_set(rose_aarch64_op_mvn_orn_log_shift, new ARM64::IP_mvn_orn_log_shift_execute);
+                iproc_set(rose_aarch64_op_mov_add_addsub_imm, new ARM64::IP_mov_add_addsub_imm_execute);
             }
 
             void
