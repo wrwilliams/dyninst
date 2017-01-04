@@ -506,24 +506,22 @@ namespace rose {
                     }
                 };
 
-                struct IP_b_uncond_execute : P {
+                struct IP_b_cond_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
 
-                        if (EXTR (31, 31) == 1)
-                            d->writeRegister(d->findRegister("x30", 64),
-                                             ops->add(d->readRegister(d->REG_PC),
-                                                      ops->number_(32, 4)));
+                        if (isTrue(d->ConditionHolds(ops->number_(32, EXTR(0, 4))))) {
+                            d->BranchTo(d->read(args[0]));
+                        }
 
-                        d->BranchTo(d->read(args[0]));
                     }
                 };
 
-                struct IP_b_cond_execute : P {                      //
+                struct IP_b_uncond_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
-
-                        d->BranchTo(ops->ite(
-                                ops->isEqual(d->ConditionHolds(ops->number_(4, EXTR (0, 4))), ops->boolean_(true)),
-                                d->read(args[0]), d->readRegister(d->REG_PC)));
+                        if (EXTR(31, 31) == 1)
+                            d->writeRegister(d->findRegister("x30", 64),
+                                             ops->add(d->readRegister(d->REG_PC), ops->number_(32, 4)));
+                        d->BranchTo(d->read(args[0]));
                     }
                 };
 
@@ -1871,7 +1869,7 @@ namespace rose {
                     }
                 };
 
-
+                //TODO modified manually for jump table analysis
                 struct IP_uxtb_ubfm_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         /*BaseSemantics::SValuePtr tmask = d->getBitfieldMask(EXTR(16, 21), EXTR(10, 15), EXTR(22, 22), false, (EXTR(31, 31) + 1) * 32);
@@ -2274,7 +2272,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_orn_log_shift_execute : P {                                      //
+                struct IP_orn_log_shift_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2349,7 +2347,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_and_log_imm_execute : P {                                        //
+                struct IP_and_log_imm_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2424,7 +2422,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_ands_log_imm_execute : P {                                       //
+                struct IP_ands_log_imm_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2499,7 +2497,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_eor_log_shift_execute : P {                                      //
+                struct IP_eor_log_shift_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2574,7 +2572,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_eon_execute : P {                                                //
+                struct IP_eon_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2611,6 +2609,7 @@ namespace rose {
                     }
                 };
 
+                //TODO modified manually for jump table analysis
                 struct IP_mov_orr_log_shift_execute : P {                                  //
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr src = d->read(args[1]);
@@ -2619,6 +2618,7 @@ namespace rose {
                     }
                 };
 
+                //TODO modified manually for jump table analysis
                 struct IP_mov_orr_log_imm_execute : P {                                    //
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr src = d->read(args[1]);
@@ -2774,7 +2774,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_bic_log_shift_execute : P {                                      //
+                struct IP_bic_log_shift_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -2811,7 +2811,7 @@ namespace rose {
                     }
                 };
 
-                struct IP_bics_execute : P {                                               //
+                struct IP_bics_execute : P {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
                         BaseSemantics::SValuePtr operand1 = d->read(args[1]);
@@ -4449,6 +4449,79 @@ namespace rose {
                     }
                 };
 
+                struct IP_csinv_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[2]);
+
+                        if (isTrue(d->ConditionHolds(ops->number_(32, EXTR(0, 4))))) {
+                            result = operand1;
+                        } else {
+                            result = operand2;
+
+                            if ((EXTR(30, 30) == 1)) {
+                                result = d->NOT(result);
+                            }
+
+                            if ((EXTR(10, 10) == 1)) {
+                                result = ops->add(result, ops->number_(32, 1));
+                            }
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_csinc_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[2]);
+
+                        if (isTrue(d->ConditionHolds(ops->number_(32, EXTR(0, 4))))) {
+                            result = operand1;
+                        } else {
+                            result = operand2;
+
+                            if ((EXTR(30, 30) == 1)) {
+                                result = d->NOT(result);
+                            }
+
+                            if ((EXTR(10, 10) == 1)) {
+                                result = ops->add(result, ops->number_(32, 1));
+                            }
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+                struct IP_csneg_execute : P {
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+                        BaseSemantics::SValuePtr operand2 = d->read(args[2]);
+
+                        if (isTrue(d->ConditionHolds(ops->number_(32, EXTR(0, 4))))) {
+                            result = operand1;
+                        } else {
+                            result = operand2;
+
+                            if ((EXTR(30, 30) == 1)) {
+                                result = d->NOT(result);
+                            }
+
+                            if ((EXTR(10, 10) == 1)) {
+                                result = ops->add(result, ops->number_(32, 1));
+                            }
+                        }
+                        d->write(args[0], result);
+
+                    }
+                };
+
+
             } // namespace
 
 /*******************************************************************************************************************************
@@ -4587,6 +4660,23 @@ namespace rose {
                 iproc_set(rose_aarch64_op_negs_subs_addsub_shift, new ARM64::IP_negs_subs_addsub_shift_execute);
                 iproc_set(rose_aarch64_op_mvn_orn_log_shift, new ARM64::IP_mvn_orn_log_shift_execute);
                 iproc_set(rose_aarch64_op_mov_add_addsub_imm, new ARM64::IP_mov_add_addsub_imm_execute);
+                iproc_set(rose_aarch64_op_csinv, new ARM64::IP_csinv_execute);
+                iproc_set(rose_aarch64_op_csinc, new ARM64::IP_csinc_execute);
+                iproc_set(rose_aarch64_op_csneg, new ARM64::IP_csneg_execute);
+            }
+
+            bool
+            isTrue(const BaseSemantics::SValuePtr &expr) {
+                ASSERT_not_null(expr);
+                Dyninst::AST::Ptr astPtr = SymEvalSemantics::SValue::promote(expr)->get_expression();
+                Dyninst::DataflowAPI::ConstantAST *
+                constAST = dynamic_cast<Dyninst::DataflowAPI::ConstantAST *>(astPtr.get());
+                ASSERT_not_null(constAST);
+
+                Dyninst::DataflowAPI::Constant constVal = constAST->val();
+                uint64_t condVal = constVal.val;
+
+                return condVal == 1;
             }
 
             void
