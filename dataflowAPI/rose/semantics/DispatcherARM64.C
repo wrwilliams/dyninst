@@ -2122,7 +2122,7 @@ namespace rose {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
 
-                        if (EXTR(29, 30) == MoveWideOp_K) {
+                        if (d->opcode(raw) == MoveWideOp_K) {
                             result = d->read(args[0]);
                         } else {
                             result = d->Zeros(64);
@@ -2132,7 +2132,7 @@ namespace rose {
                                 ops->shiftLeft(ops->extract(result, (EXTR(21, 22) << 4) + 15 + 1, result->get_width()),
                                                ops->number_(32, (EXTR(21, 22) << 4) + 15 + 1))));
 
-                        if (EXTR(29, 30) == MoveWideOp_N) {
+                        if (d->opcode(raw) == MoveWideOp_N) {
                             result = d->NOT(result);
                         }
                         d->write(args[0], result);
@@ -2144,7 +2144,7 @@ namespace rose {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
 
-                        if (EXTR(29, 30) == MoveWideOp_K) {
+                        if (d->opcode(raw) == MoveWideOp_K) {
                             result = d->read(args[0]);
                         } else {
                             result = d->Zeros(64);
@@ -2154,7 +2154,7 @@ namespace rose {
                                 ops->shiftLeft(ops->extract(result, (EXTR(21, 22) << 4) + 15 + 1, result->get_width()),
                                                ops->number_(32, (EXTR(21, 22) << 4) + 15 + 1))));
 
-                        if (EXTR(29, 30) == MoveWideOp_N) {
+                        if (d->opcode(raw) == MoveWideOp_N) {
                             result = d->NOT(result);
                         }
                         d->write(args[0], result);
@@ -2166,7 +2166,7 @@ namespace rose {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
 
-                        if (EXTR(29, 30) == MoveWideOp_K) {
+                        if (d->opcode(raw) == MoveWideOp_K) {
                             result = d->read(args[0]);
                         } else {
                             result = d->Zeros(64);
@@ -2176,7 +2176,7 @@ namespace rose {
                                 ops->shiftLeft(ops->extract(result, (EXTR(21, 22) << 4) + 15 + 1, result->get_width()),
                                                ops->number_(32, (EXTR(21, 22) << 4) + 15 + 1))));
 
-                        if (EXTR(29, 30) == MoveWideOp_N) {
+                        if (d->opcode(raw) == MoveWideOp_N) {
                             result = d->NOT(result);
                         }
                         d->write(args[0], result);
@@ -2188,7 +2188,7 @@ namespace rose {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
 
-                        if (EXTR(29, 30) == MoveWideOp_K) {
+                        if (d->opcode(raw) == MoveWideOp_K) {
                             result = d->read(args[0]);
                         } else {
                             result = d->Zeros(64);
@@ -2198,7 +2198,7 @@ namespace rose {
                                 ops->shiftLeft(ops->extract(result, (EXTR(21, 22) << 4) + 15 + 1, result->get_width()),
                                                ops->number_(32, (EXTR(21, 22) << 4) + 15 + 1))));
 
-                        if (EXTR(29, 30) == MoveWideOp_N) {
+                        if (d->opcode(raw) == MoveWideOp_N) {
                             result = d->NOT(result);
                         }
                         d->write(args[0], result);
@@ -2210,7 +2210,7 @@ namespace rose {
                     void p(D d, Ops ops, I insn, A args, B raw) {
                         BaseSemantics::SValuePtr result;
 
-                        if (EXTR(29, 30) == MoveWideOp_K) {
+                        if (d->opcode(raw) == MoveWideOp_K) {
                             result = d->read(args[0]);
                         } else {
                             result = d->Zeros(64);
@@ -2220,7 +2220,7 @@ namespace rose {
                                 ops->shiftLeft(ops->extract(result, (EXTR(21, 22) << 4) + 15 + 1, result->get_width()),
                                                ops->number_(32, (EXTR(21, 22) << 4) + 15 + 1))));
 
-                        if (EXTR(29, 30) == MoveWideOp_N) {
+                        if (d->opcode(raw) == MoveWideOp_N) {
                             result = d->NOT(result);
                         }
                         d->write(args[0], result);
@@ -4545,6 +4545,36 @@ namespace rose {
                     }
                 };
 
+                struct IP_cls_int_execute : P {                                             //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+
+                        if (d->opcode(raw) == CountOp_CLZ) {
+                            result = d->CountLeadingZeroBits(operand1);
+                        } else {
+                            result = d->CountLeadingSignBits(operand1);
+                        }
+                        d->write(args[0], ops->extract(result, 0, d->getDatasize(raw) - 1 + 1));
+
+                    }
+                };
+
+                struct IP_clz_int_execute : P {                                             //
+                    void p(D d, Ops ops, I insn, A args, B raw) {
+                        BaseSemantics::SValuePtr result;
+                        BaseSemantics::SValuePtr operand1 = d->read(args[1]);
+
+                        if (d->opcode(raw) == CountOp_CLZ) {
+                            result = d->CountLeadingZeroBits(operand1);
+                        } else {
+                            result = d->CountLeadingSignBits(operand1);
+                        }
+                        d->write(args[0], ops->extract(result, 0, d->getDatasize(raw) - 1 + 1));
+
+                    }
+                };
+
             } // namespace
 
 /*******************************************************************************************************************************
@@ -4687,6 +4717,8 @@ namespace rose {
                 iproc_set(rose_aarch64_op_csinc, new ARM64::IP_csinc_execute);
                 iproc_set(rose_aarch64_op_csneg, new ARM64::IP_csneg_execute);
                 iproc_set(rose_aarch64_op_csel, new ARM64::IP_csel_execute);
+                iproc_set(rose_aarch64_op_cls_int, new ARM64::IP_cls_int_execute);
+                iproc_set(rose_aarch64_op_clz_int, new ARM64::IP_clz_int_execute);
             }
 
             bool
@@ -5086,6 +5118,14 @@ namespace rose {
                     return IntegerOps::extract2(12, 15, raw);
             }
 
+            int
+            DispatcherARM64::opcode(uint32_t raw) {
+                if(IntegerOps::extract2<uint32_t>(23, 28, raw) == 0x25)
+                    return IntegerOps::extract2<uint32_t>(29, 30, raw);
+                else
+                    return IntegerOps::extract2<uint32_t>(10, 10, raw);
+            }
+
             BaseSemantics::SValuePtr
             DispatcherARM64::doAddOperation(BaseSemantics::SValuePtr a, BaseSemantics::SValuePtr b,
                                             bool invertCarries, const BaseSemantics::SValuePtr &carryIn,
@@ -5252,6 +5292,24 @@ namespace rose {
                     case ARM64::InsnProcessor::ShiftType_ROR: return operators->rotateRight(src, amount);
                     default: ASSERT_not_reachable("Found invalid shift type for shift instruction!");
                 }
+            }
+
+            BaseSemantics::SValuePtr
+            DispatcherARM64::CountLeadingZeroBits(const BaseSemantics::SValuePtr &expr) {
+                size_t len = expr->get_width();
+
+                for(int idx = len - 1; idx >= 0; idx--)
+                    if(operators->isEqual(operators->extract(expr, len, len + 1), operators->number_(1, 1)))
+                        return operators->number_(expr->get_width(), len - 1 - idx);
+
+                return operators->number_(expr->get_width(), len);
+            }
+
+            BaseSemantics::SValuePtr
+            DispatcherARM64::CountLeadingSignBits(const BaseSemantics::SValuePtr &expr) {
+                size_t len = expr->get_width();
+                BaseSemantics::SValuePtr arg = operators->xor_(operators->extract(expr, 1, len), operators->extract(expr, 0, len - 1));
+                return CountLeadingZeroBits(arg);
             }
         } // namespace
     } // namespace
