@@ -1,6 +1,6 @@
 # Change Log
 
-## [v9.3.1](https://github.com/dyninst/dyninst/releases/tags/v9.3.1) (2017-02-08)
+## [v9.3.1](https://github.com/dyninst/dyninst/releases/tag/v9.3.1) (2017-02-08)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.3.0...v9.3.1)
 
 **Fixed bugs:**
@@ -22,7 +22,7 @@
 - Fix test\_basic test error [\#309](https://github.com/dyninst/dyninst/pull/309) ([ikitayama](https://github.com/ikitayama))
 - Make dyninst compile on x64 windows [\#168](https://github.com/dyninst/dyninst/pull/168) ([pefoley2](https://github.com/pefoley2))
 
-## [v9.3.0](https://github.com/dyninst/dyninst/releases/tags/v9.3.0) (2016-12-22)
+## [v9.3.0](https://github.com/dyninst/dyninst/releases/tag/v9.3.0) (2016-12-22)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.2.0...v9.3.0)
 
 **Implemented enhancements:**
@@ -165,7 +165,7 @@
 - Add config to build using Appveyor [\#19](https://github.com/dyninst/dyninst/pull/19) ([pefoley2](https://github.com/pefoley2))
 - Fix warnings produced when compiling with clang [\#14](https://github.com/dyninst/dyninst/pull/14) ([pefoley2](https://github.com/pefoley2))
 
-## [v9.2.0](https://github.com/dyninst/dyninst/releases/tags/v9.2.0) (2016-06-29)
+## [v9.2.0](https://github.com/dyninst/dyninst/releases/tag/v9.2.0) (2016-06-29)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.1.0...v9.2.0)
 
 **Fixed bugs:**
@@ -263,151 +263,151 @@
 - Misc fixes and improvements [\#11](https://github.com/dyninst/dyninst/pull/11) ([pefoley2](https://github.com/pefoley2))
 - ProcControl and Symtab support for ppc64le [\#10](https://github.com/dyninst/dyninst/pull/10) ([mcfadden8](https://github.com/mcfadden8))
 
-## [v9.1.0](https://github.com/dyninst/dyninst/releases/tags/v9.1.0) (2015-12-16)
+## [v9.1.0](https://github.com/dyninst/dyninst/releases/tag/v9.1.0) (2015-12-16)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.0.3...v9.1.0)
 
-## [v9.0.3](https://github.com/dyninst/dyninst/releases/tags/v9.0.3) (2015-08-26)
+## [v9.0.3](https://github.com/dyninst/dyninst/releases/tag/v9.0.3) (2015-08-26)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.0.2...v9.0.3)
 
-## [v9.0.2](https://github.com/dyninst/dyninst/releases/tags/v9.0.2) (2015-08-24)
+## [v9.0.2](https://github.com/dyninst/dyninst/releases/tag/v9.0.2) (2015-08-24)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.0.1...v9.0.2)
 
-## [v9.0.1](https://github.com/dyninst/dyninst/releases/tags/v9.0.1) (2015-08-21)
+## [v9.0.1](https://github.com/dyninst/dyninst/releases/tag/v9.0.1) (2015-08-21)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v9.0.0...v9.0.1)
 
-## [v9.0.0](https://github.com/dyninst/dyninst/releases/tags/v9.0.0) (2015-08-20)
+## [v9.0.0](https://github.com/dyninst/dyninst/releases/tag/v9.0.0) (2015-08-20)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/milestone_5...v9.0.0)
 
-## [milestone_5](https://github.com/dyninst/dyninst/releases/tags/milestone_5) (2015-01-15)
+## [milestone_5](https://github.com/dyninst/dyninst/releases/tag/milestone_5) (2015-01-15)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/milestone_4...milestone_5)
 
-## [milestone_4](https://github.com/dyninst/dyninst/releases/tags/milestone_4) (2015-01-14)
+## [milestone_4](https://github.com/dyninst/dyninst/releases/tag/milestone_4) (2015-01-14)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/milestone_3...milestone_4)
 
-## [milestone_3](https://github.com/dyninst/dyninst/releases/tags/milestone_3) (2015-01-12)
+## [milestone_3](https://github.com/dyninst/dyninst/releases/tag/milestone_3) (2015-01-12)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.2.1...milestone_3)
 
-## [v8.2.1](https://github.com/dyninst/dyninst/releases/tags/v8.2.1) (2014-10-30)
+## [v8.2.1](https://github.com/dyninst/dyninst/releases/tag/v8.2.1) (2014-10-30)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.2.0.1...v8.2.1)
 
-## [v8.2.0.1](https://github.com/dyninst/dyninst/releases/tags/v8.2.0.1) (2014-08-19)
+## [v8.2.0.1](https://github.com/dyninst/dyninst/releases/tag/v8.2.0.1) (2014-08-19)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.2.0...v8.2.0.1)
 
-## [v8.2.0](https://github.com/dyninst/dyninst/releases/tags/v8.2.0) (2014-08-19)
+## [v8.2.0](https://github.com/dyninst/dyninst/releases/tag/v8.2.0) (2014-08-19)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.1.2...v8.2.0)
 
-## [v8.1.2](https://github.com/dyninst/dyninst/releases/tags/v8.1.2) (2013-06-18)
+## [v8.1.2](https://github.com/dyninst/dyninst/releases/tag/v8.1.2) (2013-06-18)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre8.1.2RC3...v8.1.2)
 
-## [pre8.1.2RC3](https://github.com/dyninst/dyninst/releases/tags/pre8.1.2RC3) (2013-06-07)
+## [pre8.1.2RC3](https://github.com/dyninst/dyninst/releases/tag/pre8.1.2RC3) (2013-06-07)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre8.1.2RC2...pre8.1.2RC3)
 
-## [pre8.1.2RC2](https://github.com/dyninst/dyninst/releases/tags/pre8.1.2RC2) (2013-06-04)
+## [pre8.1.2RC2](https://github.com/dyninst/dyninst/releases/tag/pre8.1.2RC2) (2013-06-04)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre8.1.2RC1...pre8.1.2RC2)
 
-## [pre8.1.2RC1](https://github.com/dyninst/dyninst/releases/tags/pre8.1.2RC1) (2013-05-29)
+## [pre8.1.2RC1](https://github.com/dyninst/dyninst/releases/tag/pre8.1.2RC1) (2013-05-29)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.1.1...pre8.1.2RC1)
 
-## [v8.1.1](https://github.com/dyninst/dyninst/releases/tags/v8.1.1) (2013-03-14)
+## [v8.1.1](https://github.com/dyninst/dyninst/releases/tag/v8.1.1) (2013-03-14)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre-8.1RC1...v8.1.1)
 
-## [pre-8.1RC1](https://github.com/dyninst/dyninst/releases/tags/pre-8.1RC1) (2013-03-01)
+## [pre-8.1RC1](https://github.com/dyninst/dyninst/releases/tag/pre-8.1RC1) (2013-03-01)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre-8.1...pre-8.1RC1)
 
-## [pre-8.1](https://github.com/dyninst/dyninst/releases/tags/pre-8.1) (2013-02-22)
+## [pre-8.1](https://github.com/dyninst/dyninst/releases/tag/pre-8.1) (2013-02-22)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v8.0...pre-8.1)
 
-## [v8.0](https://github.com/dyninst/dyninst/releases/tags/v8.0) (2012-11-19)
+## [v8.0](https://github.com/dyninst/dyninst/releases/tag/v8.0) (2012-11-19)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/SW8.0CrayRC3...v8.0)
 
-## [SW8.0CrayRC3](https://github.com/dyninst/dyninst/releases/tags/SW8.0CrayRC3) (2012-10-15)
+## [SW8.0CrayRC3](https://github.com/dyninst/dyninst/releases/tag/SW8.0CrayRC3) (2012-10-15)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/SW8.0RC2...SW8.0CrayRC3)
 
-## [SW8.0RC2](https://github.com/dyninst/dyninst/releases/tags/SW8.0RC2) (2012-10-15)
+## [SW8.0RC2](https://github.com/dyninst/dyninst/releases/tag/SW8.0RC2) (2012-10-15)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/SW8.0RC1...SW8.0RC2)
 
-## [SW8.0RC1](https://github.com/dyninst/dyninst/releases/tags/SW8.0RC1) (2012-10-15)
+## [SW8.0RC1](https://github.com/dyninst/dyninst/releases/tag/SW8.0RC1) (2012-10-15)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/kevin-final...SW8.0RC1)
 
-## [kevin-final](https://github.com/dyninst/dyninst/releases/tags/kevin-final) (2012-01-11)
+## [kevin-final](https://github.com/dyninst/dyninst/releases/tag/kevin-final) (2012-01-11)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release7_0...kevin-final)
 
-## [Release7_0](https://github.com/dyninst/dyninst/releases/tags/Release7_0) (2011-03-23)
+## [Release7_0](https://github.com/dyninst/dyninst/releases/tag/Release7_0) (2011-03-23)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release6_1...Release7_0)
 
-## [Release6_1](https://github.com/dyninst/dyninst/releases/tags/Release6_1) (2009-12-04)
+## [Release6_1](https://github.com/dyninst/dyninst/releases/tag/Release6_1) (2009-12-04)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release6_0...Release6_1)
 
-## [Release6_0](https://github.com/dyninst/dyninst/releases/tags/Release6_0) (2009-06-30)
+## [Release6_0](https://github.com/dyninst/dyninst/releases/tag/Release6_0) (2009-06-30)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/SanDiegoDistro...Release6_0)
 
-## [SanDiegoDistro](https://github.com/dyninst/dyninst/releases/tags/SanDiegoDistro) (2007-11-21)
+## [SanDiegoDistro](https://github.com/dyninst/dyninst/releases/tag/SanDiegoDistro) (2007-11-21)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release5_1...SanDiegoDistro)
 
-## [Release5_1](https://github.com/dyninst/dyninst/releases/tags/Release5_1) (2007-05-31)
+## [Release5_1](https://github.com/dyninst/dyninst/releases/tag/Release5_1) (2007-05-31)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/release5_1_beta...Release5_1)
 
-## [release5_1_beta](https://github.com/dyninst/dyninst/releases/tags/release5_1_beta) (2007-01-04)
+## [release5_1_beta](https://github.com/dyninst/dyninst/releases/tag/release5_1_beta) (2007-01-04)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release5_0...release5_1_beta)
 
-## [Release5_0](https://github.com/dyninst/dyninst/releases/tags/Release5_0) (2006-07-05)
+## [Release5_0](https://github.com/dyninst/dyninst/releases/tag/Release5_0) (2006-07-05)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/pre_multitramp...Release5_0)
 
-## [pre_multitramp](https://github.com/dyninst/dyninst/releases/tags/pre_multitramp) (2005-07-19)
+## [pre_multitramp](https://github.com/dyninst/dyninst/releases/tag/pre_multitramp) (2005-07-19)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release4_2_1...pre_multitramp)
 
-## [Release4_2_1](https://github.com/dyninst/dyninst/releases/tags/Release4_2_1) (2005-04-12)
+## [Release4_2_1](https://github.com/dyninst/dyninst/releases/tag/Release4_2_1) (2005-04-12)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/mrnet-1_1...Release4_2_1)
 
-## [mrnet-1_1](https://github.com/dyninst/dyninst/releases/tags/mrnet-1_1) (2005-04-04)
+## [mrnet-1_1](https://github.com/dyninst/dyninst/releases/tag/mrnet-1_1) (2005-04-04)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release4_2...mrnet-1_1)
 
-## [Release4_2](https://github.com/dyninst/dyninst/releases/tags/Release4_2) (2005-03-23)
+## [Release4_2](https://github.com/dyninst/dyninst/releases/tag/Release4_2) (2005-03-23)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Dyninst4_1...Release4_2)
 
-## [Dyninst4_1](https://github.com/dyninst/dyninst/releases/tags/Dyninst4_1) (2004-04-28)
+## [Dyninst4_1](https://github.com/dyninst/dyninst/releases/tag/Dyninst4_1) (2004-04-28)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/mrnet-1-0...Dyninst4_1)
 
-## [mrnet-1-0](https://github.com/dyninst/dyninst/releases/tags/mrnet-1-0) (2003-09-11)
+## [mrnet-1-0](https://github.com/dyninst/dyninst/releases/tag/mrnet-1-0) (2003-09-11)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Before_PVM_Removal...mrnet-1-0)
 
-## [Before_PVM_Removal](https://github.com/dyninst/dyninst/releases/tags/Before_PVM_Removal) (2003-07-30)
+## [Before_PVM_Removal](https://github.com/dyninst/dyninst/releases/tag/Before_PVM_Removal) (2003-07-30)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Dyninst4_0...Before_PVM_Removal)
 
-## [Dyninst4_0](https://github.com/dyninst/dyninst/releases/tags/Dyninst4_0) (2003-05-30)
+## [Dyninst4_0](https://github.com/dyninst/dyninst/releases/tag/Dyninst4_0) (2003-05-30)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/snapshot_20020513...Dyninst4_0)
 
-## [snapshot_20020513](https://github.com/dyninst/dyninst/releases/tags/snapshot_20020513) (2002-05-10)
+## [snapshot_20020513](https://github.com/dyninst/dyninst/releases/tag/snapshot_20020513) (2002-05-10)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Dyninst3_0...snapshot_20020513)
 
-## [Dyninst3_0](https://github.com/dyninst/dyninst/releases/tags/Dyninst3_0) (2002-01-17)
+## [Dyninst3_0](https://github.com/dyninst/dyninst/releases/tag/Dyninst3_0) (2002-01-17)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release3_2...Dyninst3_0)
 
-## [Release3_2](https://github.com/dyninst/dyninst/releases/tags/Release3_2) (2001-03-14)
+## [Release3_2](https://github.com/dyninst/dyninst/releases/tag/Release3_2) (2001-03-14)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release3_1...Release3_2)
 
-## [Release3_1](https://github.com/dyninst/dyninst/releases/tags/Release3_1) (2000-08-24)
+## [Release3_1](https://github.com/dyninst/dyninst/releases/tag/Release3_1) (2000-08-24)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release3_0...Release3_1)
 
-## [Release3_0](https://github.com/dyninst/dyninst/releases/tags/Release3_0) (2000-05-16)
+## [Release3_0](https://github.com/dyninst/dyninst/releases/tag/Release3_0) (2000-05-16)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Dyninst2_0...Release3_0)
 
-## [Dyninst2_0](https://github.com/dyninst/dyninst/releases/tags/Dyninst2_0) (2000-04-11)
+## [Dyninst2_0](https://github.com/dyninst/dyninst/releases/tag/Dyninst2_0) (2000-04-11)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release2_1...Dyninst2_0)
 
-## [Release2_1](https://github.com/dyninst/dyninst/releases/tags/Release2_1) (1998-05-06)
+## [Release2_1](https://github.com/dyninst/dyninst/releases/tag/Release2_1) (1998-05-06)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release2_0...Release2_1)
 
-## [Release2_0](https://github.com/dyninst/dyninst/releases/tags/Release2_0) (1997-09-19)
+## [Release2_0](https://github.com/dyninst/dyninst/releases/tag/Release2_0) (1997-09-19)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release1_1...Release2_0)
 
-## [Release1_1](https://github.com/dyninst/dyninst/releases/tags/Release1_1) (1996-08-16)
+## [Release1_1](https://github.com/dyninst/dyninst/releases/tag/Release1_1) (1996-08-16)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/Release1_0...Release1_1)
 
-## [Release1_0](https://github.com/dyninst/dyninst/releases/tags/Release1_0) (1996-05-17)
+## [Release1_0](https://github.com/dyninst/dyninst/releases/tag/Release1_0) (1996-05-17)
 [Full Changelog](https://github.com/dyninst/dyninst/compare/v0_0...Release1_0)
 
-## [v0_0](https://github.com/dyninst/dyninst/releases/tags/v0_0) (1993-09-03)
+## [v0_0](https://github.com/dyninst/dyninst/releases/tag/v0_0) (1993-09-03)
 
 
 \* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
