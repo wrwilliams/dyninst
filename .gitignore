@@ -107,7 +107,6 @@ libdwarf
 *.dvi
 *.toc
 *.out
-CHANGELOG
 *.bak
 massif.out.*
 DyninstAPI*.tgz
@@ -118,4 +117,4 @@ doxyfiles/*
 */Debug/
 */Release/
 cotire/
-.idea/*
+.idea
